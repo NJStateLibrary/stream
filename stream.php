@@ -101,7 +101,7 @@ class WP_Stream {
 		}
 
 		// Load API helper interface/class
-		self::$api = new WP_Stream_API;
+		self::$api = apply_filters( 'wp_stream_api_class', new WP_Stream_API );
 
 		// Install the plugin
 		add_action( 'wp_stream_before_db_notices', array( __CLASS__, 'install' ) );
