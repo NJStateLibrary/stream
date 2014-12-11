@@ -100,7 +100,11 @@ class WP_Stream {
 			wp_die( __( 'Stream: Could not load chosen DB driver.', 'stream' ), 'Stream DB Error' );
 		}
 
-		// Load API helper interface/class
+		/**
+		 * Filter allows a custom Stream API class to be instantiated
+		 *
+		 * @return object  The API class object
+		 */
 		self::$api = apply_filters( 'wp_stream_api_class', new WP_Stream_API );
 
 		// Install the plugin
@@ -266,6 +270,11 @@ class WP_Stream {
 			$development_mode = true;
 		}
 
+		/**
+		 * Filter allows development mode to be overridden
+		 *
+		 * @return bool
+		 */
 		return apply_filters( 'wp_stream_development_mode', $development_mode );
 	}
 
