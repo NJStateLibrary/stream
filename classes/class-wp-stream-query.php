@@ -70,6 +70,14 @@ class WP_Stream_Query {
 			'action'        => null,
 		);
 
+		/**
+		 * Filter allows additional query properties to be added
+		 *
+		 * @param  array  Array of query properties
+		 * @return array  Updated array of query properties
+		 */
+		$properties = apply_filters( 'wp_stream_query_properties', $properties );
+
 		// Add property fields to defaults, including their __in/__not_in variations
 		foreach ( $properties as $property => $default ) {
 			if ( ! isset( $defaults[ $property ] ) ) {
