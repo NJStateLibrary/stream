@@ -868,12 +868,12 @@ class WP_Stream_Admin {
 		$authors_records = array();
 
 		foreach ( $authors as $user_id => $args ) {
-			$author   = new WP_Stream_Author( $user_id );
-			$disabled = isset( $args['disabled'] ) ? $args['disabled'] : null;
+			$author   = new WP_Stream_Author( $args->ID );
+			$disabled = isset( $args->disabled ) ? $args->disabled : null;
 
 			$authors_records[ $user_id ] = array(
 				'text'     => $author->get_display_name(),
-				'id'       => $user_id,
+				'id'       => $author->ID,
 				'label'    => $author->get_display_name(),
 				'icon'     => $author->get_avatar_src( 32 ),
 				'title'    => '',
